@@ -1,0 +1,7 @@
+\begin{figure}
+\centering
+\caption{Sales Tax Rates by County (Dec 2016)}
+\includegraphics[width = 0.9\textwidth]{../5_figures/taxRateByCounty.pdf}
+\caption*{Note: Using December 2016 Tax Data Systems data, this figure plots the spatial distribution of sales tax rates.}
+\label{fig:taxStats}
+\end{figure}

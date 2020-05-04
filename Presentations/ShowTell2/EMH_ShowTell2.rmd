@@ -1,0 +1,105 @@
+---
+title: 'Show and Tell: Online Shopping'
+author: "Mallick Hossain"
+date: NULL
+output:
+  beamer_presentation:
+    slide_level: 3
+    keep_tex: false
+header-includes:
+- \usetheme[numbering = fraction, progressbar = none, background = light, sectionpage
+  = progressbar]{metropolis}
+- \usepackage{amsmath}
+subtitle: Continued Exploration
+fontsize: 10pt
+---
+### Progress Report
+* Organized comScore online shopping and browsing data
+    + Answered previous question about how online shopping and browsing activity has changed since 2002!
+* Read papers linking online shopping with tax avoidance and increased elasticity
+* Focused research question on online shopping and sales taxes and/or excise taxes for tobacco
+
+### Question from Last Time
+* How are panelists selected?
+    + Primary source is through the Third-party Application Providers which offers free software, applications, and utilities in exchange for considering participating in the comScore panel
+        * In many cases, people still receive the application even if they decline to join the panel
+        * comScore also offers a Trees for Knowledge program which they pledge to plant a tree for each new panelist that joins
+    + Second method is through their Affiliate program which relies on text or banner ads
+        * People are encouraged through either "make your voice heard" appeals or incentives (see above)
+
+### Number of Users in Sample
+\centering
+\includegraphics[scale = 0.4]{users}
+
+### Sales Summary
+* Category 1 is Apparel. I'm sure this is some categorization fluke.
+
+\centering
+\includegraphics[scale = 0.4]{sales1}
+
+### Sales Summary
+* Removing apparel, we see that Air Travel is the largest source of online sales
+
+\centering
+\includegraphics[scale = 0.4]{sales2}
+
+### Per Capita Sales
+* We can also normalize this by the number of users that made online purchases, to make the numbers comparable across years
+
+\centering
+\includegraphics[scale = 0.4]{perCapitaSales}
+
+### Browsing Behavior
+\centering
+\includegraphics[scale = 0.4]{browsing}
+
+### Per Capita Browsing
+\centering
+\includegraphics[scale = 0.4]{perCapitaBrowsing}
+
+### Open Questions
+* Are individuals shifting their offline shopping online or is this generating new shopping?
+* Has online shopping become more concentrated over time (measured by number of sites visited or with recorded purchases)?
+    + Seems like people are spending less time browsing and searching
+* Does search in online shopping result in lower prices (i.e. what are the benefits of reduced search costs)?
+* Is online shopping sensitive to sales or excise taxes?
+    + Strong evidence from Goolsbee, et. al (2010) and Einav, et. al (2014)
+* How should the observations be weighted? comScore only provides raw data, not weights.
+    
+### Goolsbee, Lovenheim, Slemrod (2010)
+* Use cigarette sales, excise taxes, and internet penetration to estimate sensitive to taxes
+    + Online tobacco merchants generally do not collect sales or excise taxes
+* Find that internet sales have increased sensitivity of taxable cigarette sales to state tax rates by 69%
+* Estimate that tax increases between 2001 and 2005 might have caused states to collect about 9% less revenue that would have been expected without tax-free internet sales
+
+### Online Tobacco Sales
+* What's going on here?
+    + Not exactly sure just yet. Could be a categorization issue. Further investigation is under way.
+    
+\centering
+\includegraphics[scale = 0.4]{tobacco}
+
+### Recall Last Meeting's Goals
+* Review papers related to e-commerce to help narrow down feasible and interesting questions
+* Clean and organize comScore data 
+* Answer at least one of the questions posed earlier in this presentation
+
+### Mission Accomplished
+\centering
+\includegraphics[scale = 0.75]{mission}
+
+### Goals for Next Meeting
+* Clean comScore panelist data (i.e. remove panelists with missing or implausible data)
+* Get data matching ZIP codes with states
+* Get data of state-level sales and tobacco taxes since 2002
+* Explore relationships between online sales and state sales tax (a la Einav, et. al 2014)
+* Summarize more related papers
+
+### Questions and Suggestions
+\centering
+\Large Any questions or suggestions?
+
+### Thanks
+
+\centering
+\includegraphics[scale = 0.5]{thanks}

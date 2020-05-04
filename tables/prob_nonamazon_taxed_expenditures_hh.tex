@@ -1,0 +1,36 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mon, Nov 19, 2018 - 02:48:04 PM
+\begin{table}[!htbp] \centering 
+  \caption{Probability of Taxed Non-Amazon Purchase} 
+  \label{tab:taxed_nonamazonProb} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{5}{c}{Probability of Purchase} \\ 
+\cline{2-6} 
+ & \multicolumn{4}{c}{All Counties} & Border County \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5)\\ 
+\hline \\[-1.8ex] 
+ Tax & 0.17 & 0.14 & $-$0.07 & $-$0.06 & 4.20$^{**}$ \\ 
+  & (0.36) & (0.36) & (0.44) & (0.44) & (2.09) \\ 
+  Tax * Collect &  & 0.15$^{**}$ & 0.15$^{**}$ & 0.14 & 0.82$^{*}$ \\ 
+  &  & (0.08) & (0.07) & (0.08) & (0.44) \\ 
+  Tax Diff &  &  & 0.48 & 0.45 &  \\ 
+  &  &  & (0.57) & (0.58) &  \\ 
+  Tax Diff * Collect &  &  &  & 0.08 &  \\ 
+  &  &  &  & (0.27) &  \\ 
+ \hline \\[-1.8ex] 
+Demographics & Y & Y & Y & Y & Y \\ 
+Product Cat. FE & Y & Y & Y & Y & Y \\ 
+County FE & Y & Y & Y & Y & Y \\ 
+Month-Year FE & Y & Y & Y & Y & Y \\ 
+Observations & 2,237,095 & 2,237,095 & 2,237,095 & 2,237,095 & 64,768 \\ 
+R$^{2}$ & 0.22 & 0.22 & 0.22 & 0.22 & 0.26 \\ 
+Adjusted R$^{2}$ & 0.22 & 0.22 & 0.22 & 0.22 & 0.26 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{5}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{5}{l}{Standard errors are clustered at the county level.} \\ 
+\end{tabular} 
+\end{table} 

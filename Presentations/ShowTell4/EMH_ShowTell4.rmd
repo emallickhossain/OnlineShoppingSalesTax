@@ -1,0 +1,166 @@
+---
+title: 'Show and Tell: Online Shopping'
+author: "Mallick Hossain"
+date: NULL
+output:
+  beamer_presentation:
+    slide_level: 3
+    keep_tex: false
+header-includes:
+- \usetheme[numbering = fraction, progressbar = none, background = light, sectionpage
+  = progressbar]{metropolis}
+- \usepackage{amsmath}
+subtitle: Reduced-Form Tax Analysis
+fontsize: 10pt
+---
+### Progress Report
+* Presented at the empirical lunch (and survived)
+* Began doing some reduced-form analysis
+
+### Presentation Debrief
+* Presentation went decently well
+    + Presented broad ideas of trying to relate online shopping to taxes and time use decisions 
+    + Introduced question of using dataset to identify sales tax elasticities
+    + Introduced dataset
+* Overall, people liked the data and were proposing questions
+* Liked some of my questions and agreed they were feasible in a reduced-form environment
+* Less sure about my approach to creating a model that includes tax, time, and shopping decisions
+    
+### Reviewing Goolsbee (2000)
+* Goolsbee (2000) estimates a probit model of the decision to purchase online after controlling for observables and sales taxes
+* Dependent variable is 1 if person has **ever** purchased online and 0 otherwise
+* Relies on a proprietary survey from December 1997 and only 20% of his sample had ever purchased anything online
+* Estimated elasticity of online buying with respect to the tax price (1 + t) is about 2.3
+    + Implies that applying sales tax to online purchases would reduce online shopping by about 24%
+    
+### Online Shopping Update
+![Online Shopping as Share of Total Retail Shopping](../../paper/charts/eCommerce.png)
+
+### Revisiting Goolsbee (2000)
+* Online shopping has dramatically changed since December 1997
+* Worth re-estimating Goolsbee's model with comScore data
+    + Elasticities governing the decision of whether or not to purchase online has likely changed
+    + Doubt that cracking down on Amazon has decreased online shopping by 24%
+* Interesting to see how elasticities have changed over time
+* comScore data is richer than Goolsbee's which allows for closer analysis of shopping behavior beyond the binary purchase decision
+
+### Summary Stats
+
+```{r, echo=FALSE, message=FALSE, eval=TRUE}
+library(dplyr)
+library(data.table)
+library(stargazer)
+load(file = "../../goolsbee2000Replication/goolsbee.rda")
+
+# Generating summary statistics
+fullSample <- goolsbee %>% summarise(n = n(), 
+                       hhsizeMean = round(mean(household_size), digits = 2), 
+                       hhsizeSD = round(sd(household_size), digits = 2),
+                       ageMean = round(mean(hoh_oldest_age), digits = 2), 
+                       ageSD = round(sd(hoh_oldest_age), digits = 2),
+                       incomeMean = round(mean(household_income), digits = 2),
+                       incomeSD = round(sd(household_income), digits = 2), 
+                       childrenMean = round(mean(children), digits = 2),
+                       childrenSD = round(sd(children), digits = 2),
+                       hispanicMean = round(mean(country_of_origin), digits = 2),
+                       hispanicSD = round(sd(country_of_origin), digits = 2),
+                       taxMean = round(mean(ave_tax), digits = 2),
+                       taxSD = round(sd(ave_tax), digits = 2))
+
+subgroups <- goolsbee %>% group_by(purchase) %>% 
+  summarise(n = n(), 
+            hhsizeMean = round(mean(household_size), digits = 2), 
+            hhsizeSD = round(sd(household_size), digits = 2),
+            ageMean = round(mean(hoh_oldest_age), digits = 2),
+            ageSD = round(sd(hoh_oldest_age), digits = 2),
+            incomeMean = round(mean(household_income), digits = 2),
+            incomeSD = round(sd(household_income), digits = 2),
+            childrenMean = round(mean(children), digits = 2),
+            childrenSD = round(sd(children), digits = 2),
+            hispanicMean = round(mean(country_of_origin), digits = 2),
+            hispanicSD = round(sd(country_of_origin), digits = 2),
+            taxMean = round(mean(ave_tax), digits = 2),
+            taxSD = round(sd(ave_tax), digits = 2))
+
+fullRace <- round(prop.table(table(goolsbee$racial_background)), digits = 2)
+fullAge <- round(prop.table(table(goolsbee$ageGroup)), digits = 2)
+fullIncome <- round(prop.table(table(goolsbee$incomeGroup)), digits = 2)
+buyerRace <- round(prop.table(table(goolsbee[purchase == 1]$racial_background)), digits = 2)
+nonBuyerRace <- round(prop.table(table(goolsbee[purchase == 0]$racial_background)), digits = 2)
+```
+
+|                | All online users            |  Buyers                       | Nonbuyers |
+|:--------------:|:---------------------------:|:-----------------------------:|:-------------------:|
+|        n       | `r fullSample$n`            | `r subgroups$n[1]`            | `r subgroups$n[2]`|
+|        t       | `r fullSample$taxMean`      | `r subgroups$taxMean[2]`      | `r subgroups$taxMean[2]`|
+|     Income     | `r fullSample$incomeMean`   | `r subgroups$incomeMean[1]`   | `r subgroups$incomeMean[2]`|
+|       Age      | `r fullSample$ageMean`      | `r subgroups$ageMean[1]`      | `r subgroups$ageMean[2]`|
+|      Asian     | `r fullRace["Asian"]`       | `r buyerRace["Asian"]`        | `r nonBuyerRace["Asian"]`|
+|      Black     | `r fullRace["Black"]`       | `r buyerRace["Black"]`        | `r nonBuyerRace["Black"]`|
+|      Other     | `r fullRace["Other"]`       | `r buyerRace["Other"]`        | `r nonBuyerRace["Other"]`|
+|      White     | `r fullRace["White"]`       | `r buyerRace["White"]`        | `r nonBuyerRace["White"]`|
+|    Hispanic    | `r fullSample$hispanicMean` | `r subgroups$hispanicMean[1]` | `r subgroups$hispanicMean[2]`|
+|    Children    | `r fullSample$childrenMean` | `r subgroups$childrenMean[1]` | `r subgroups$childrenMean[2]`|
+| Household Size | `r fullSample$hhsizeMean`   | `r subgroups$hhsizeMean[1]`   | `r subgroups$hhsizeMean[2]`|
+
+
+### Reduced-Form Analysis Results
+
+\centering
+\scalebox{0.6}{
+{\footnotesize
+\begin{tabular}{@{\extracolsep{5pt}}lc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-2} 
+\\[-1.8ex] & purchase \\ 
+\hline \\[-1.8ex] 
+ household\_size & $-$0.003$^{***}$ \\ 
+  & (0.001) \\ 
+  children & 0.120$^{***}$ \\ 
+  & (0.004) \\ 
+  racial\_backgroundBlack & $-$0.447$^{***}$ \\ 
+  & (0.005) \\ 
+  racial\_backgroundAsian & $-$0.226$^{***}$ \\ 
+  & (0.010) \\ 
+  racial\_backgroundOther & $-$0.505$^{***}$ \\ 
+  & (0.006) \\ 
+  country\_of\_origin & $-$0.103$^{***}$ \\ 
+  & (0.005) \\ 
+  ageGroup25-54 & 0.226$^{***}$ \\ 
+  & (0.007) \\ 
+  ageGroup55+ & 0.241$^{***}$ \\ 
+  & (0.008) \\ 
+  incomeGroupLow & $-$0.154$^{***}$ \\ 
+  & (0.004) \\ 
+  incomeGroupMiddle & $-$0.124$^{***}$ \\ 
+  & (0.004) \\ 
+  ave\_tax & $-$0.571$^{***}$ \\ 
+  & (0.108) \\ 
+  Constant & 0.024$^{**}$ \\ 
+  & (0.011) \\ 
+ \hline \\[-1.8ex] 
+Observations & 558,831 \\ 
+Log Likelihood & $-$376,925.100 \\ 
+Akaike Inf. Crit. & 753,874.200 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+}}
+
+### Goals for Next Meeting
+* Figure out what's going on with taxes
+* Do reduced-form analysis incorporating the time dimension
+    + Specifically incorporate state law changes that forced taxation of online sales (New York started in 2008)
+    + Amazon crackdowns are nice natural experiments to do this
+    + Could also use opening of Amazon Fulfillment Centers as well
+
+### Questions and Suggestions
+\centering
+\Large Any questions or suggestions?
+
+### Thanks
+\centering
+\includegraphics[width = 0.8\textwidth]{thanks}

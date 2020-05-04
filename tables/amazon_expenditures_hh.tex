@@ -1,0 +1,35 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Sun, Nov 18, 2018 - 01:28:40 PM
+\begin{table}[!htbp] \centering 
+  \caption{Amazon Expenditures} 
+  \label{tab:amazonExp} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{5}{c}{Log Expenditures} \\ 
+\cline{2-6} 
+ & \multicolumn{4}{c}{All Counties} & Border Counties \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5)\\ 
+\hline \\[-1.8ex] 
+ Tax & 0.651 & 0.765 & 1.763 & 1.731 & $-$11.836 \\ 
+  & (1.119) & (1.121) & (1.433) & (1.438) & (7.805) \\ 
+  Tax * Collect &  & $-$0.396$^{*}$ & $-$0.387$^{*}$ & $-$0.275 & $-$3.133$^{***}$ \\ 
+  &  & (0.215) & (0.216) & (0.240) & (1.117) \\ 
+  Tax Diff &  &  & $-$2.091 & $-$1.602 &  \\ 
+  &  &  & (1.718) & (1.695) &  \\ 
+  Tax Diff * Collect &  &  &  & $-$0.814 &  \\ 
+  &  &  &  & (0.843) &  \\ 
+ \hline \\[-1.8ex] 
+Demographics & Y & Y & Y & Y & Y \\ 
+County FE & Y & Y & Y & Y & Y \\ 
+Month-Year FE & Y & Y & Y & Y & Y \\ 
+Observations & 156,110 & 156,110 & 156,110 & 156,110 & 5,461 \\ 
+R$^{2}$ & 0.057 & 0.057 & 0.057 & 0.057 & 0.086 \\ 
+Adjusted R$^{2}$ & 0.039 & 0.039 & 0.039 & 0.039 & 0.051 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{5}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{5}{l}{Standard errors are clustered at the county level.} \\ 
+\end{tabular} 
+\end{table} 

@@ -1,0 +1,79 @@
+---
+title: 'Show and Tell: Online Shopping'
+author: "Mallick Hossain"
+date: NULL
+output:
+  beamer_presentation:
+    slide_level: 3
+    keep_tex: false
+header-includes:
+- \usetheme[numbering = fraction, progressbar = none, background = light, sectionpage
+  = progressbar]{metropolis}
+- \usepackage{amsmath}
+subtitle: Demographics and Other Diversions
+fontsize: 10pt
+---
+### Progress Report
+* Slow two weeks and did not get as much done as I aspired to last meeting
+* Productively procrastinated and put together the time-use analysis [tool](http://mallickhossain.com/time-use/analysis/visualization/2017/02/14/time-use-analysis/) I teased about in the first meeting
+* Summarized demographics of the comScore sample
+* Took steps to secure Nielsen scanner data
+    + Combining online and offline shopping behavior for the future
+    + Probably not feasible to do this for third-year paper
+    
+# Demographics
+
+### Race
+\centering
+\includegraphics[width = 0.9\textwidth]{race}
+
+### Race
+* Compared to the 2014 racial breakdown of the US by the Census Bureau, the comScore sample is
+    + Whiter, until 2010 (~80% vs 62% in Census)
+    + Blacker, after 2010 (~20% vs 12% in Census)
+    + Asian is relatively similar (5.2% in Census)
+* I still have no idea how to treat Hispanic. Advice?
+
+### Age
+\centering
+\includegraphics[width = 0.9\textwidth]{age}
+
+### Age
+* Compared to the 2015 age distribution of the US, the comScore sample is more middle-aged (i.e. less 65+ and 25-44 year olds and that mass is in 45-64 year olds)
+
+### Income
+\centering
+\includegraphics[width = 0.9\textwidth]{inc}
+
+### Income
+* Compared to the 2015 income distribution of the US, the comScore sample is slightly poorer
+    + More making between $50k-$75k (~25% vs 17% in Census)
+    + Less making over $100k (~15% vs 25% in Census)
+
+### Question from Last Time
+* What do the panelists look like?
+    + Answered!
+* What was going on with tobacco sales?
+    + There was a categorization issue in 2002. New chart looks like this
+* Are individuals shifting their offline shopping online or is this generating new shopping?
+* Has online shopping become more concentrated over time (measured by number of sites visited or with recorded purchases)?
+    + Seems like people are spending less time browsing and searching
+* Does search in online shopping result in lower prices (i.e. what are the benefits of reduced search costs)?
+* Is online shopping sensitive to sales or excise taxes?
+    + Strong evidence from Goolsbee, et. al (2010) and Einav, et. al (2014)
+* How should the observations be weighted? comScore only provides raw data, not weights.
+
+### Goals for Next Meeting
+* Clean comScore panelist data (i.e. remove panelists with missing or implausible data)
+* Get data matching ZIP codes with states
+* Get data of state-level sales and tobacco taxes since 2002
+* Explore relationships between online sales and state sales tax (a la Einav, et. al 2014)
+* Summarize more related papers
+
+### Questions and Suggestions
+\centering
+\Large Any questions or suggestions?
+
+### Thanks
+\centering
+\includegraphics[width = 0.8\textwidth]{thanks}

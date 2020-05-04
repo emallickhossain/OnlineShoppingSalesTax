@@ -1,0 +1,36 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mon, Nov 19, 2018 - 02:46:11 PM
+\begin{table}[!htbp] \centering 
+  \caption{Probability of Amazon Purchase} 
+  \label{tab:amazonProb} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{5}{c}{Probability of Purchase} \\ 
+\cline{2-6} 
+ & \multicolumn{4}{c}{All Counties} & Border County \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5)\\ 
+\hline \\[-1.8ex] 
+ Tax & $-$0.06 & $-$0.02 & $-$0.16 & $-$0.16 & $-$3.20$^{**}$ \\ 
+  & (0.26) & (0.25) & (0.29) & (0.30) & (1.35) \\ 
+  Tax * Collect &  & $-$0.22$^{***}$ & $-$0.22$^{***}$ & $-$0.21$^{***}$ & $-$1.09$^{***}$ \\ 
+  &  & (0.06) & (0.06) & (0.07) & (0.34) \\ 
+  Tax Diff &  &  & 0.31 & 0.36 &  \\ 
+  &  &  & (0.41) & (0.43) &  \\ 
+  Tax Diff * Collect &  &  &  & $-$0.10 &  \\ 
+  &  &  &  & (0.20) &  \\ 
+ \hline \\[-1.8ex] 
+Demographics & Y & Y & Y & Y & Y \\ 
+Product Cat. FE & Y & Y & Y & Y & Y \\ 
+County FE & Y & Y & Y & Y & Y \\ 
+Month-Year FE & Y & Y & Y & Y & Y \\ 
+Observations & 2,237,095 & 2,237,095 & 2,237,095 & 2,237,095 & 64,768 \\ 
+R$^{2}$ & 0.32 & 0.32 & 0.32 & 0.32 & 0.34 \\ 
+Adjusted R$^{2}$ & 0.32 & 0.32 & 0.32 & 0.32 & 0.34 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{5}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{5}{l}{Standard errors are clustered at the county level.} \\ 
+\end{tabular} 
+\end{table} 

@@ -1,0 +1,29 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Thu, Mar 12, 2020 - 04:21:17 PM
+\begin{table}[!htbp] \centering
+  \caption{Online Spending Response to Amazon Sales Tax Collection}
+  \label{tab:spendingDiD}
+\begin{tabularx}{\textwidth}{lXXXXXX}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & Amazon & Untaxed Sites & Taxed Sites & Amazon & Untaxed Sites & Taxed Sites \\
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
+\hline \\[-1.8ex]
+ Collect & $-$0.422$^{**}$ & $-$0.112 & 0.549$^{**}$ &  &  &  \\
+  & (0.183) & (0.150) & (0.249) &  &  &  \\
+  Collect * Tax Rate &  &  &  & $-$6.173$^{**}$ & $-$2.043 & 6.811$^{*}$ \\
+  &  &  &  & (2.715) & (2.165) & (3.545) \\
+ \hline \\[-1.8ex]
+Household FE & Y & Y & Y & Y & Y & Y \\
+Month-Year FE & Y & Y & Y & Y & Y & Y \\
+Mean Spending & 3.30 & 4.86 & 7.01 & 3.30 & 4.86 & 7.01 \\
+Mean Tax & 0.068 & 0.068 & 0.068 & 0.068 & 0.068 & 0.068 \\
+Observations & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 \\
+Adjusted R$^{2}$ & 0.124 & 0.203 & 0.184 & 0.124 & 0.203 & 0.184 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{6}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabularx}
+\caption*{Note: Using 2006--2016 comScore data on household-month online expenditures, this table reports the estimation results of Equation \ref{eq:model}. "Collect" is a dummy variable indicating whether Amazon collected sales tax in a particular household-month. "Tax Rate" measures the local sales tax rate faced by a household in a particular month. All expenditures are real expenditures, deflated to December 2016 using the CPI. "Taxed Sites" refers to websites of retailers that have offline stores. "Untaxed Sites" are online-only retailers with no offline stores. Standard errors are clustered at the state level.}
+\end{table}

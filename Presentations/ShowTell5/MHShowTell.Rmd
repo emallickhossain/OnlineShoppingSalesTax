@@ -1,0 +1,152 @@
+---
+title: 'Online Shopping and Taxes'
+author: "Mallick Hossain"
+date: NULL
+output:
+  beamer_presentation:
+    slide_level: 3
+    keep_tex: false
+    fig_caption: false
+header-includes:
+  - \usetheme[numbering = fraction, progressbar = none, background = light, sectionpage
+              = progressbar]{metropolis}
+  - \usepackage{amsmath}
+  - \usepackage{graphicx}
+fontsize: 10pt
+---
+
+### Background
+* Online shopping has grown immensely over time
+
+\centering
+![](../../paper/charts/eCommerce.png)
+
+### Sales Tax Collection Lagged
+* States did not collect sales tax on online sales for many years, but enforcement has picked up over the past decade
+
+```{r, eval=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
+library(data.table)
+library(plotly)
+amazonTally <- fread("../../AmazonSalesTaxTally.csv")
+names(amazonTally) <- c("year", "tally")
+amazonTally$year <- as.Date(amazonTally$year)
+tally <- plot_ly(data = amazonTally, x = ~year, y = ~tally, type = "bar") %>%
+  layout(title = "Number of States Amazon Collects Sales Tax",
+         margin = list(t = 50, b = 50),
+         font = list(size = 20),
+         xaxis = list(title = "Year"),
+         yaxis = list(title = "Number of States", range = c(0, 50), dtick = 10))
+export(tally, file = "../../paper/charts/amazonTally.png")
+```
+
+
+\centering
+![](../../paper/charts/amazonTally.png)
+
+### Online Shopping and Tax Elasticity
+* Many studies have tried to estimate consumer elasticity with respect to sales tax rates
+* Extensive margin estimates tend to be low while intensive margin estimates are high
+
+```{r, eval=TRUE, message=FALSE, warning=FALSE, echo=FALSE}
+library(knitr)
+library(data.table)
+elasticity <- data.table(Paper = c("Alm & Melnik (2005)", "Ballard & Lee (2007)", 
+                                   "Scanlan (2007)", "Baugh, Ben-David, & Park (2016)", 
+                                   "Houde, Newberry, & Seim (2016)", 
+                                   "Einav et al (2014)", "Goolsbee (2000)"),
+                         Estimate = c(0.5, 0.2, 0, 1.3, 1.3, 1.8, 2.3))
+setkey(elasticity, Estimate)
+kable(elasticity)
+```
+
+### Search Story
+* One potential explanation for this bimodality is search 
+
+* **Search costs are lower** for online shopping, so consumers can be more price-sensitive on the intensive margin   
+
+* **Switching costs are higher** between online and offline search technologies, so less sensitivity on the extensive margin
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE, echo=FALSE}
+library(plotly)
+library(data.table)
+# Source: https://www.census.gov/data/tables/2012/demo/computer-internet/computer-use-2012.html
+# Source: https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_1YR_B28003&prodType=table
+internet <- data.table(Year = c(1997, 2000, 2001, 2003, 2007, 2009:2015),
+                       Access = c(18.0, 41.5, 50.4, 54.7, 61.7, 68.7, 71.1, 71.7, 74.8, 
+                                  (1166676 + 84783856) / 116291033 * 100,
+                                  (830904 + 87398926) / 117259427 * 100,
+                                  (647073 + 89987564) / 118208250 * 100))
+internetPlot <-plot_ly(data = internet, x = ~Year, y = ~Access, 
+                       type = "scatter", mode = "lines", line = list(width = 5)) %>%
+  layout(title = "Internet Access (1997-2015)",
+         margin = list(t = 50, b = 50),
+         font = list(size = 20),
+         xaxis = list(title = "Year", dtick = 5, range = c(1995, 2015)),
+         yaxis = list(title = "Percent of Households", range = c(0, 100), dtick = 20))
+export(internetPlot, file = "../../paper/charts/internetAccess.png")
+```
+
+### Internet Access Over Time
+
+\centering
+![](../../paper/charts/internetAccess.png)
+
+### Reduced-Form Results (Expenditures)
+|                  |        (1)       |        (2)       |       (3)       |       (4)       |       (5)       |
+|------------------|:----------------:|:----------------:|:---------------:|:---------------:|:---------------:|
+| Intercept        |  29.66*** (0.51) |  27.79*** (1.01) | 36.07*** (2.34) | 36.49*** (2.34) | 37.00*** (2.34) |
+| Collect          |  -3.43*** (0.96) |  -3.58*** (0.97) |   -3.19 (1.90)  |   -3.15 (1.90)  |   -3.43 (1.90)  |
+| Tax Rate         |    8.12 (7.35)   |   11.61 (7.33)   |  10.07 (27.67)  |   9.39 (27.67)  |   8.17 (27.66)  |
+| Collect*Tax Rate | 47.28*** (13.35) | 47.35*** (13.38) |  59.23* (29.81) |  58.47* (29.81) |  62.66* (29.81) |
+| Children  |                  |                  |                 | -0.74*** (0.21) | -0.82*** (0.21) |
+| <$35k            |                  |                  |                 |                 | -1.83*** (0.22) |
+| MMYY FEs   |        NO        |        YES       |       YES       |       YES       |       YES       |
+| State FEs        |        NO        |        NO        |       YES       |       YES       |       YES       |
+
+### Reduced-Form Results (Basket Totals)
+
+|                  |       (1)       |       (2)       |       (3)       |       (4)       |       (5)       |
+|------------------|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
+| Intercept        | 33.81*** (1.29) | 30.18*** (2.54) | 38.49*** (5.89) | 38.47*** (5.90) | 38.95*** (5.90) |
+| Collect          |   -4.03 (2.39)  |   -4.75 (2.43)  |   -3.54 (4.79)  |   -3.54 (4.79)  |   -3.80 (4.79)  |
+| Tax Rate         |  34.16 (18.40)  |  37.72* (18.48) |  113.04 (69.72) |  113.08 (69.73) |  111.91 (69.72) |
+| Collect*Tax Rate |  64.38 (33.44)  |  69.06* (33.68) |  55.85 (75.12)  |  55.89 (75.12)  |  59.89 (75.13)  |
+| Children  |                 |                 |                 |   0.04 (0.53)   |   -0.04 (0.53)  |
+| <$35k            |                 |                 |                 |                 |  -1.75** (0.55) |
+| MMYY FEs   |        NO       |       YES       |       YES       |       YES       |       YES       |
+| State FEs        |        NO       |        NO       |       YES       |       YES       |       YES       |
+
+### Reduced-Form Results (Page Views)
+|                  |        (1)        |        (2)       |        (3)        |        (4)        |        (5)        |
+|------------------|:-----------------:|:----------------:|:-----------------:|:-----------------:|:-----------------:|
+| Intercept        |  101.66*** (2.41) | 109.65*** (4.75) | 140.35*** (11.00) | 135.77*** (11.02) | 132.50*** (11.01) |
+| Collect          |   11.88** (4.48)  |   -8.65 (4.54)   |    5.90 (8.95)    |    5.42 (8.94)    |    7.21 (8.94)    |
+| Tax Rate         | 129.03*** (34.44) |   58.94 (34.54)  |  170.24 (130.27)  |  177.66 (130.25)  |  185.64 (130.20)  |
+| Collect*Tax Rate | -188.61** (62.61) |   10.79 (62.95)  |  -111.37 (140.36) |  -103.06 (140.34) |  -130.32 (140.30) |
+| Children  |                   |                  |                   |   8.06*** (0.98)  |   8.59*** (0.98)  |
+| <$35k            |                   |                  |                   |                   |  11.92*** (1.04)  |
+| MMYY FEs   |         NO        |        YES       |        YES        |        YES        |        YES        |
+| State FEs        |         NO        |        NO        |        YES        |        YES        |        YES        |
+
+### List of Variations for Potential Use
+1. Changes in sales tax rates over time
+2. Changes in tax rates of neighboring counties and states over time
+3. Variation in sales tax rates across different product categories
+4. Variation between websites that collect sales taxes or not (e.g. walmart.com versus Amazon.com before 2008)
+5. Variation in Amazon fulfillment center openings
+6. Variation in state enforcement of sales tax collection
+7. The cross of (1) and (6) and the variation in sales tax rates before state enforcement and after state enforcement of sales tax collection
+8. 5 states (Alaska, Delaware, Montana, New Hampshire, and Oregon) have never had sales tax (Alaska has local sales tax)
+9. Behavioral changes in browsing throughout each of the above
+
+### Model Ideas
+1. Consumer decision is a choice over search technologies
+    + **Offline:** High search costs, high fixed cost, immediate utility
+    + **Online:** Low search cost, no fixed cost, delayed utility
+    + de los Santos, Hortacsu, and Wildenbeest (2012) provide evidence that online search behavior follows a *fixed-sample* strategy as opposed to sequential search
+    + Suggestions for papers that introduce choices over search technologies?
+
+2. Consumer decision is a discrete choice over products
+    + Follow Hanemann (1984) where online and offline product are treated as different brands of the same good and they are perfect substitutes
+    + Estimation requires data on online and offline shopping decisions
+    + Potentially focus on a narrow product category (such as books)

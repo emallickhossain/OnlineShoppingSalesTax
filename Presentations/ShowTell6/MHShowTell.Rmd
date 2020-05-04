@@ -1,0 +1,546 @@
+---
+title: "Online Shopping and Taxes"
+author: "Mallick Hossain"
+date: NULL
+output:
+  beamer_presentation:
+    slide_level: 3
+    keep_tex: false
+    fig_caption: false
+header-includes:
+  - \usetheme[numbering = fraction, progressbar = none, background = light, sectionpage
+              = progressbar]{metropolis}
+  - \usepackage{amsmath}
+  - \usepackage{graphicx}
+  - \usepackage{multirow}
+  - \usepackage{bbm}
+fontsize: 10pt
+---
+
+### Background
+* Online shopping has grown immensely over time (to 8.5% of total retail sales in 2017:Q1), even when retail sales have cratered
+
+\centering
+![](/home/mallick/Dropbox/Research/OnlineShopping/code/5_figures/retailOnline.png)
+
+### Background
+* Sales taxes makes up 33% of state tax revenue    
+
+* People try to avoid paying taxes when possible^\textcolor{blue}{[Citation needed]}^  
+* Online transactions have been effectively tax free  
+* In 2008, New York passed the first "Amazon Law" to require Amazon to collect sales tax instead of relying on consumer self-reporting  
+    + Amazon circumvented this law, but it began a slow cascade of state initiatives to recapture an important stream of revenue  
+* As of April 1, 2017, Amazon now collects sales tax in all states
+
+### Motivating Questions
+* How responsive is consumer spending to sales taxes?
+
+    + I explore a simpler question: Do consumers shift spending away from Amazon when Amazon collects sales tax in their state?
+    
+    + Are consumers shifting spending to non-taxed outlets, taxed outlets, or reducing their spending?
+    
+    + Are consumers shifting spending to other online outlets, offline outlets, or reducing their spending?
+
+* Is consumer search behavior affected by sales taxes?
+    
+    + I explore a simpler question: Do consumers shift time (i.e. search and eyeballs) away from Amazon when Amazon collects sales tax?
+
+### Preview of Results
+
+**comScore Web Behavior Database**
+
+* Consumers are less likely to make an Amazon purchase when Amazon begins collecting sales tax in their state
+
+* Consumers' implied tax-spending elasticity is about -0.5, meaning that for a 1pp increase in the tax rate, Amazon spending decreases by 0.5% conditional on Amazon collecting sales tax 
+    + This effect is even more pronounced for consumers that live in counties bordering states with no sales tax (i.e. Delaware, Oregon, New Hampshire, Montana)
+* Consumers shift their spending to Amazon's taxed competitors, with the implied elasticity of 0.6, meaning that for a 1pp increase in the tax rate, spending on Amazon's taxed competitors increases by 0.6% conditional on Amazon collecting sales tax
+* Similar results hold when looking at page views and time spent on Amazon versus Amazon's taxed competitors
+
+### Preview of Results
+
+**Nielsen Homescan Consumer Panel**
+
+* Expenditures at online-only stores is not affected when Amazon begins collecting sales tax
+* Cross-border shopping is important
+    + For every 1pp difference in sales tax rate between home and adjacent county rate, online-only spending drops by about 3.3% and this is slightly more sensitive in border counties
+* Expenditures at stores with an offline presence (may or may not have an online store) are sensitive to taxes
+    + A 1pp increase in the sales tax rate is associated with a 0.54% increase in spending at stores with an offline presence
+    + Conditional on Amazon collecting sales tax, there is an additional 0.06% boost to spending at stores with an offline presence.
+    
+
+### Related Literature
+* **Cross-border Shopping**
+    + Consumers living close to borders are more tax sensitive than those not close to borders
+    + Mikesell (1970); Asplund, Friberg, and Wilander (2007); Davis (2011); Agarwal, Marwell, and McGranahan (2017)
+
+* **Online Shopping**
+    + Sales taxes influence individual's decisions of whether to shop online and how much they spend
+    + Goolsbee (2000); Alm and Melnik (2005); Scanlan (2007); Ballard and Lee (2007); Einav et al (2014); Baugh, Ben-David, and Park (2017); Houde, Newberry, and Seim (2017)
+    
+### Estimated Elasticities
+
+\begin{table}[]
+\centering
+\caption{Cross-Border Shopping Elasticities}
+\label{tab:elasticity}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{lll}
+\hline
+Elasticity Type           & Paper                     & Estimate     \\ \hline
+\multirow{6}{3.5cm}{Cross-border Price-Expenditure} &
+Asplund, Friberg, Wilander (2007) -- Foreign price    & 0.2 to 0.5   \\  
+& Asplund, Friberg, Wilander (2007) -- Domestic price & -0.2 to -1.3 \\
+& Agarwal, Marwell, McGranahan (2017)                 & -2 to -30    \\
+& Davis (2011)                                        & -2.2 to -3.6 \\
+& Agarwal, Chomsisengphet, Qian, Xu (2017)            & -2.3         \\
+& Mikesell (1970)                                     & -6.3         \\ \hline
+\multirow{5}{3.5cm}{Tax-Purchase} &
+Scanlan (2007)                                        &  0.0          \\
+& Ballard \& Lee (2007)                               & -0.2          \\
+& Alm \& Melnik (2005)                                & -0.5          \\
+& Einav, Knoepfle, Levin, \& Sundaresan (2014)        & -1.8          \\
+& Goolsbee (2000)                                     & -2.3          \\ \hline
+\multirow{4}{3.5cm}{Tax-Price} &
+\textbf{Hossain (2017) - non-Amazon spending}         & \textbf{0.6}  \\
+& \textbf{Hossain (2017) - Amazon spending}           & \textbf{-0.5} \\
+& Baugh, Ben-David, \& Park (2017)                    & -1.2 to -1.4  \\
+& Houde, Newberry, \& Seim (2017)                     & -1.3          \\ \hline
+\end{tabular}}
+\end{table}
+
+### Data
+* **comScore Web Behavior Database**
+    + Captures computer-level browsing and transaction activity 
+    + Households report various demographics and ZIP code
+    + Includes domain name
+    + Data from 2006 to 2016
+    
+* **Nielsen Homescan Panel**
+    + Nationally representative panel that keeps track of all goods that they buy and consume
+    + High-quality data and well-maintained panel
+    + Stores are anonymized, but they are categorized
+    + Data from 2004-2015
+    
+* **Tax Data Systems**
+    + Database of state, county, and local sales tax rates at a ZIP code level
+    + Data from 2006 to 2014
+    
+### Research Design
+* Before 2008, Amazon only collected sales tax in the 5 states it had a physical presence in
+
+* In 2008, New York passed the first law requiring Amazon to collect sales tax even though it did not have a physical presence in New York
+
+* Over the next 9 years, Amazon quasi-randomly began collecting sales tax in various states, either by entering into agreements with the states or because states passed laws requiring them to collect sales tax
+
+* From a consumer perspective, these changes were largely unexpected and would be plausibly exogeneous shocks
+
+### Regression Specification
+
+$$
+E^{j}_{hct} = \beta_0 + \beta_1 \log(\mathbbm{1}_{ct}^{Collect} * SalesTax_{ct}) +
+\beta_2 TaxDiff_{ct} + \lambda_h + \lambda_c + \lambda_t + \epsilon_{hct}
+$$
+
+* The above regression relates log expenditures (on various channels) to 
+    + Local sales tax rate conditional on Amazon collecting sales tax
+    + Difference in tax rates between a consumer's home county and an adjacent county
+    + Household income and race
+    + Month-year and county fixed effects
+
+### Regression Results (Expenditures)
+\begin{table}[!htbp] \centering 
+  \caption{Amazon Expenditures} 
+  \label{} 
+\resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{9}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-10} 
+\\[-1.8ex] & \multicolumn{9}{c}{Log Expenditures} \\ 
+ & \multicolumn{5}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9)\\ 
+\hline \\[-1.8ex] 
+ Collect & $-$0.037$^{***}$ &  &  &  &  & $-$0.233$^{**}$ &  &  &  \\ 
+  & (0.011) &  &  &  &  & (0.105) &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & 0.525 &  &  &  &  & $-$12.144$^{*}$ &  & $-$12.267$^{*}$ \\ 
+  &  & (1.198) &  &  &  &  & (6.498) &  & (6.494) \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & $-$0.500$^{**}$ & $-$0.498$^{**}$ & $-$0.498$^{**}$ &  &  & $-$3.892$^{**}$ & $-$3.920$^{**}$ \\ 
+  &  &  & (0.233) & (0.233) & (0.233) &  &  & (1.729) & (1.728) \\ 
+  & & & & & & & & & \\ 
+ Tax Diff &  &  &  & $-$0.346 &  &  &  &  &  \\ 
+  &  &  &  & (1.440) &  &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  & $-$0.392 &  &  &  &  \\ 
+  &  &  &  &  & (1.510) &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 156,462 & 99,541 & 99,541 & 99,541 & 99,541 & 3,443 & 3,443 & 3,443 & 3,443 \\ 
+R$^{2}$ & 0.067 & 0.064 & 0.065 & 0.065 & 0.065 & 0.102 & 0.101 & 0.102 & 0.103 \\ 
+Adjusted R$^{2}$ & 0.051 & 0.040 & 0.040 & 0.040 & 0.040 & 0.061 & 0.061 & 0.061 & 0.062 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{9}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{9}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{9}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{9}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular}}
+\end{table} 
+
+### Regression Results (Expenditures)
+\begin{table}[!htbp] \centering 
+  \caption{Taxed Non-Amazon Expenditures} 
+  \label{} 
+\resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{9}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-10} 
+\\[-1.8ex] & \multicolumn{9}{c}{Log Expenditures} \\ 
+ & \multicolumn{5}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9)\\ 
+\hline \\[-1.8ex] 
+ Collect & 0.002 &  &  &  &  & 0.081 &  &  &  \\ 
+  & (0.010) &  &  &  &  & (0.124) &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & $-$1.147 &  &  &  &  & 3.427 &  & 3.297 \\ 
+  &  & (0.816) &  &  &  &  & (5.174) &  & (5.177) \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & 0.583$^{***}$ & 0.586$^{***}$ & 0.586$^{***}$ &  &  & 1.681 & 1.640 \\ 
+  &  &  & (0.184) & (0.184) & (0.184) &  &  & (2.050) & (2.051) \\ 
+  & & & & & & & & & \\ 
+ Tax Diff &  &  &  & $-$0.580 &  &  &  &  &  \\ 
+  &  &  &  & (1.013) &  &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  & $-$0.601 &  &  &  &  \\ 
+  &  &  &  &  & (1.063) &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 227,411 & 181,217 & 181,217 & 181,217 & 181,217 & 5,584 & 5,584 & 5,584 & 5,584 \\ 
+R$^{2}$ & 0.044 & 0.048 & 0.048 & 0.048 & 0.048 & 0.059 & 0.059 & 0.059 & 0.059 \\ 
+Adjusted R$^{2}$ & 0.032 & 0.033 & 0.033 & 0.033 & 0.033 & 0.032 & 0.032 & 0.032 & 0.032 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{9}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{9}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{9}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{9}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular}}
+\end{table} 
+
+### Regression Results (Expenditures)
+\begin{table}[!htbp] \centering 
+  \caption{Non-Taxed Non-Amazon Expenditures} 
+  \label{} 
+  \resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{9}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-10} 
+\\[-1.8ex] & \multicolumn{9}{c}{Log Expenditures} \\ 
+ & \multicolumn{5}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9)\\ 
+\hline \\[-1.8ex] 
+ Collect & 0.006 &  &  &  &  & $-$0.182 &  &  &  \\ 
+  & (0.011) &  &  &  &  & (0.130) &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & $-$0.265 &  &  &  &  & 19.211$^{***}$ &  & 19.446$^{***}$ \\ 
+  &  & (0.894) &  &  &  &  & (5.694) &  & (5.698) \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & $-$0.084 & $-$0.083 & $-$0.083 &  &  & $-$2.087 & $-$2.352 \\ 
+  &  &  & (0.216) & (0.216) & (0.216) &  &  & (2.104) & (2.103) \\ 
+  & & & & & & & & & \\ 
+ Tax Diff &  &  &  & $-$0.192 &  &  &  &  &  \\ 
+  &  &  &  & (1.126) &  &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  & $-$0.161 &  &  &  &  \\ 
+  &  &  &  &  & (1.182) &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 213,613 & 167,907 & 167,907 & 167,907 & 167,907 & 4,914 & 4,914 & 4,914 & 4,914 \\ 
+R$^{2}$ & 0.037 & 0.043 & 0.043 & 0.043 & 0.043 & 0.063 & 0.065 & 0.063 & 0.065 \\ 
+Adjusted R$^{2}$ & 0.024 & 0.027 & 0.027 & 0.027 & 0.027 & 0.033 & 0.035 & 0.032 & 0.035 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{9}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{9}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{9}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{9}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular} }
+\end{table} 
+
+### Regression Results (Search)
+\begin{table}[!htbp] \centering 
+  \caption{Amazon Search Duration} 
+  \label{} 
+  \resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{9}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-10} 
+\\[-1.8ex] & \multicolumn{9}{c}{Log Expenditures} \\ 
+ & \multicolumn{5}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9)\\ 
+\hline \\[-1.8ex] 
+ Collect & $-$0.030$^{***}$ &  &  &  &  & $-$0.290$^{***}$ &  &  &  \\ 
+  & (0.010) &  &  &  &  & (0.100) &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & $-$1.782 &  &  &  &  & $-$20.383$^{***}$ &  & $-$20.537$^{***}$ \\ 
+  &  & (1.096) &  &  &  &  & (6.214) &  & (6.207) \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & $-$0.401$^{*}$ & $-$0.401$^{*}$ & $-$0.401$^{*}$ &  &  & $-$4.857$^{***}$ & $-$4.902$^{***}$ \\ 
+  &  &  & (0.213) & (0.214) & (0.213) &  &  & (1.654) & (1.652) \\ 
+  & & & & & & & & & \\ 
+ Tax Diff &  &  &  & 0.037 &  &  &  &  &  \\ 
+  &  &  &  & (1.318) &  &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  & 0.063 &  &  &  &  \\ 
+  &  &  &  &  & (1.382) &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 156,462 & 99,541 & 99,541 & 99,541 & 99,541 & 3,443 & 3,443 & 3,443 & 3,443 \\ 
+R$^{2}$ & 0.076 & 0.082 & 0.082 & 0.082 & 0.082 & 0.118 & 0.118 & 0.118 & 0.121 \\ 
+Adjusted R$^{2}$ & 0.060 & 0.057 & 0.057 & 0.057 & 0.057 & 0.078 & 0.079 & 0.078 & 0.081 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{9}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{9}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{9}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{9}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular} }
+\end{table} 
+
+### Regression Results (Search)
+\begin{table}[!htbp] \centering 
+  \caption{Taxed Non-Amazon Search Duration} 
+  \label{} 
+  \resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{9}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-10} 
+\\[-1.8ex] & \multicolumn{9}{c}{Log Expenditures} \\ 
+ & \multicolumn{5}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9)\\ 
+\hline \\[-1.8ex] 
+ Collect & 0.011 &  &  &  &  & $-$0.029 &  &  &  \\ 
+  & (0.009) &  &  &  &  & (0.106) &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & 0.270 &  &  &  &  & 16.928$^{***}$ &  & 16.964$^{***}$ \\ 
+  &  & (0.706) &  &  &  &  & (4.405) &  & (4.407) \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & 0.094 & 0.091 & 0.091 &  &  & $-$0.236 & $-$0.447 \\ 
+  &  &  & (0.159) & (0.159) & (0.159) &  &  & (1.747) & (1.746) \\ 
+  & & & & & & & & & \\ 
+ Tax Diff &  &  &  & 0.580 &  &  &  &  &  \\ 
+  &  &  &  & (0.877) &  &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  & 0.692 &  &  &  &  \\ 
+  &  &  &  &  & (0.921) &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 227,411 & 181,217 & 181,217 & 181,217 & 181,217 & 5,584 & 5,584 & 5,584 & 5,584 \\ 
+R$^{2}$ & 0.046 & 0.052 & 0.052 & 0.052 & 0.052 & 0.059 & 0.061 & 0.059 & 0.061 \\ 
+Adjusted R$^{2}$ & 0.034 & 0.037 & 0.037 & 0.037 & 0.037 & 0.032 & 0.035 & 0.032 & 0.035 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{9}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{9}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{9}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{9}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular} }
+\end{table} 
+
+### Regression Results (Search)
+\begin{table}[!htbp] \centering 
+  \caption{Non-Taxed Non-Amazon Search Duration} 
+  \label{} 
+  \resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{9}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-10} 
+\\[-1.8ex] & \multicolumn{9}{c}{Log Expenditures} \\ 
+ & \multicolumn{5}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9)\\ 
+\hline \\[-1.8ex] 
+ Collect & 0.018 &  &  &  &  & 0.112 &  &  &  \\ 
+  & (0.013) &  &  &  &  & (0.155) &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & 2.690$^{***}$ &  &  &  &  & $-$1.413 &  & $-$1.629 \\ 
+  &  & (1.029) &  &  &  &  & (6.811) &  & (6.815) \\ 
+  & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & 0.592$^{**}$ & 0.588$^{**}$ & 0.588$^{**}$ &  &  & 2.139 & 2.161 \\ 
+  &  &  & (0.248) & (0.248) & (0.248) &  &  & (2.514) & (2.516) \\ 
+  & & & & & & & & & \\ 
+ Tax Diff &  &  &  & 1.480 &  &  &  &  &  \\ 
+  &  &  &  & (1.295) &  &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  & 1.517 &  &  &  &  \\ 
+  &  &  &  &  & (1.360) &  &  &  &  \\ 
+  & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 213,613 & 167,907 & 167,907 & 167,907 & 167,907 & 4,914 & 4,914 & 4,914 & 4,914 \\ 
+R$^{2}$ & 0.075 & 0.075 & 0.075 & 0.075 & 0.075 & 0.090 & 0.090 & 0.091 & 0.091 \\ 
+Adjusted R$^{2}$ & 0.062 & 0.060 & 0.060 & 0.060 & 0.060 & 0.061 & 0.061 & 0.061 & 0.061 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{9}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{9}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{9}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{9}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular} }
+\end{table} 
+
+### Regression Results (Nielsen)
+\begin{table}[!htbp] \centering 
+  \caption{Online Expenditures} 
+  \label{} 
+  \resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lcccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{10}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-11} 
+\\[-1.8ex] & \multicolumn{10}{c}{Log Expenditures} \\ 
+ & \multicolumn{6}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9) & (10)\\ 
+\hline \\[-1.8ex] 
+ Collect & 0.010 &  &  &  &  &  & $-$0.235$^{***}$ &  &  &  \\ 
+  & (0.006) &  &  &  &  &  & (0.055) &  &  &  \\ 
+  & & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & $-$0.392 &  & $-$0.356 &  &  &  & $-$4.088 &  & $-$4.010 \\ 
+  &  & (0.590) &  & (0.592) &  &  &  & (3.860) &  & (3.857) \\ 
+  & & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & $-$0.095 & $-$0.090 & $-$0.055 & $-$0.056 &  &  & $-$4.022$^{***}$ & $-$4.018$^{***}$ \\ 
+  &  &  & (0.112) & (0.113) & (0.113) & (0.113) &  &  & (0.910) & (0.910) \\ 
+  & & & & & & & & & & \\ 
+ Tax Diff &  &  &  &  & $-$3.339$^{***}$ &  &  &  &  &  \\ 
+  &  &  &  &  & (0.693) &  &  &  &  &  \\ 
+  & & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  &  & $-$3.534$^{***}$ &  &  &  &  \\ 
+  &  &  &  &  &  & (0.728) &  &  &  &  \\ 
+  & & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 618,386 & 444,606 & 444,606 & 444,606 & 444,606 & 444,606 & 12,131 & 12,131 & 12,131 & 12,131 \\ 
+R$^{2}$ & 0.064 & 0.072 & 0.072 & 0.072 & 0.072 & 0.072 & 0.099 & 0.097 & 0.099 & 0.099 \\ 
+Adjusted R$^{2}$ & 0.059 & 0.067 & 0.067 & 0.067 & 0.067 & 0.067 & 0.086 & 0.085 & 0.087 & 0.087 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{10}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{10}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{10}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{10}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular} }
+\end{table} 
+
+### Regression Results (Nielsen)
+\begin{table}[!htbp] \centering 
+  \caption{Offline Expenditures} 
+  \label{} 
+  \resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lcccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{10}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-11} 
+\\[-1.8ex] & \multicolumn{10}{c}{Log Expenditures} \\ 
+ & \multicolumn{6}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9) & (10)\\ 
+\hline \\[-1.8ex] 
+ Collect & 0.008$^{***}$ &  &  &  &  &  & $-$0.002 &  &  &  \\ 
+  & (0.001) &  &  &  &  &  & (0.014) &  &  &  \\ 
+  & & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & 0.545$^{***}$ &  & 0.530$^{***}$ &  &  &  & $-$1.672$^{**}$ &  & $-$1.675$^{**}$ \\ 
+  &  & (0.119) &  & (0.119) &  &  &  & (0.800) &  & (0.800) \\ 
+  & & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & 0.064$^{**}$ & 0.057$^{**}$ & 0.062$^{**}$ & 0.062$^{**}$ &  &  & 0.031 & 0.042 \\ 
+  &  &  & (0.026) & (0.026) & (0.026) & (0.026) &  &  & (0.227) & (0.227) \\ 
+  & & & & & & & & & & \\ 
+ Tax Diff &  &  &  &  & 0.174 &  &  &  &  &  \\ 
+  &  &  &  &  & (0.144) &  &  &  &  &  \\ 
+  & & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  &  & 0.182 &  &  &  &  \\ 
+  &  &  &  &  &  & (0.152) &  &  &  &  \\ 
+  & & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 6,001,547 & 4,209,893 & 4,209,893 & 4,209,893 & 4,209,893 & 4,209,893 & 107,630 & 107,630 & 107,630 & 107,630 \\ 
+R$^{2}$ & 0.088 & 0.091 & 0.091 & 0.091 & 0.091 & 0.091 & 0.094 & 0.094 & 0.094 & 0.094 \\ 
+Adjusted R$^{2}$ & 0.088 & 0.090 & 0.090 & 0.090 & 0.090 & 0.090 & 0.093 & 0.093 & 0.093 & 0.093 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{10}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{10}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{10}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{10}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular} }
+\end{table} 
+
+### Regression Results (Nielsen)
+\begin{table}[!htbp] \centering 
+  \caption{Total Expenditures} 
+  \label{} 
+  \resizebox{0.98\textwidth}{!}{
+\begin{tabular}{@{\extracolsep{5pt}}lcccccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{10}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-11} 
+\\[-1.8ex] & \multicolumn{10}{c}{Log Expenditures} \\ 
+ & \multicolumn{6}{c}{All Counties} & \multicolumn{4}{c}{Border Counties} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6) & (7) & (8) & (9) & (10)\\ 
+\hline \\[-1.8ex] 
+ Collect & 0.010$^{***}$ &  &  &  &  &  & 0.004 &  &  &  \\ 
+  & (0.001) &  &  &  &  &  & (0.014) &  &  &  \\ 
+  & & & & & & & & & & \\ 
+ Log(1 + Sales Tax) &  & 0.616$^{***}$ &  & 0.597$^{***}$ &  &  &  & $-$1.814$^{**}$ &  & $-$1.823$^{**}$ \\ 
+  &  & (0.118) &  & (0.118) &  &  &  & (0.798) &  & (0.798) \\ 
+  & & & & & & & & & & \\ 
+ Log(1 + Sales Tax * Collect) &  &  & 0.085$^{***}$ & 0.078$^{***}$ & 0.084$^{***}$ & 0.084$^{***}$ &  &  & 0.108 & 0.120 \\ 
+  &  &  & (0.026) & (0.026) & (0.026) & (0.026) &  &  & (0.227) & (0.227) \\ 
+  & & & & & & & & & & \\ 
+ Tax Diff &  &  &  &  & 0.112 &  &  &  &  &  \\ 
+  &  &  &  &  & (0.144) &  &  &  &  &  \\ 
+  & & & & & & & & & & \\ 
+ Tax Ratio &  &  &  &  &  & 0.115 &  &  &  &  \\ 
+  &  &  &  &  &  & (0.151) &  &  &  &  \\ 
+  & & & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 6,006,028 & 4,213,437 & 4,213,437 & 4,213,437 & 4,213,437 & 4,213,437 & 107,711 & 107,711 & 107,711 & 107,711 \\ 
+R$^{2}$ & 0.089 & 0.091 & 0.091 & 0.091 & 0.091 & 0.091 & 0.095 & 0.095 & 0.095 & 0.095 \\ 
+Adjusted R$^{2}$ & 0.088 & 0.091 & 0.091 & 0.091 & 0.091 & 0.091 & 0.093 & 0.093 & 0.093 & 0.093 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{10}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{10}{l}{Household race and income as well as month-year, county, and product category} \\ 
+ & \multicolumn{10}{l}{fixed effects are included in the above regressions and standard errors are} \\ 
+ & \multicolumn{10}{l}{clustered at the year-month and county level.} \\ 
+\end{tabular} }
+\end{table} 
+
+### Future Research
+* Connect these results with either a fully rational agent story or a salience story
+
+* Explore the browsing (comScore) and shopping trips (Nielsen) data to estimate search costs
+
+* Explore the labor and public finance impact of these shifts (is a hot topic in the press)
+    + Big question: Is ecommerce making traditional retailing disappear and what are the impacts of it? 
+        * Almost 16 million people are employed in "Retail Trade". If you remove Food and Beverage, Gasoline, and Motor Vehicles, you still have 9 million people.
+        * Manufacturing only employs 12 million people
+    + The Economist (May 13, 2017): Sorry, we're closed: The decline of established American retailing threatens jobs
+    + The Atlantic (May 23, 2017): The Viscious Cycle of Retail's Decline
+
+### Questions?
+\centering
+![](./question.jpg)
+
+### Thanks!
+\centering
+![](./thanks.png)

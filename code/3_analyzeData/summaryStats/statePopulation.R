@@ -1,0 +1,6 @@
+library(Quandl)
+states <- paste0("FRED/", state.abb, "POP")
+population <- Quandl(states, start_date = "1998-12-31")
+setDT(population)
+names(population) <- c("date", state.abb)
+save(population, file = "/home/mallick/Desktop/comScore/statePop.rda", compress = TRUE)

@@ -1,0 +1,130 @@
+---
+title: 'Online Shopping and Taxes'
+author: "Mallick Hossain"
+date: NULL
+output:
+  beamer_presentation:
+    slide_level: 3
+    keep_tex: false
+    fig_caption: false
+header-includes:
+- \usetheme[numbering = fraction, progressbar = none, background = light, sectionpage
+  = progressbar]{metropolis}
+- \usepackage{amsmath}
+subtitle: Update
+fontsize: 10pt
+---
+### Progress Report
+* Estimated regressions similar to Baugh, Ben-David, and Park (2016) 
+
+\medskip
+
+* Tried to replicate a few findings from Amazon network paper 
+
+\medskip
+
+* Hoping to incorporate more information on search into analysis
+    
+### Current Goal
+* Replicate Baugh, Ben-David, and Park (2016) with comScore data
+
+\medskip
+
+* Augment analysis with browsing behavior on Amazon
+
+\medskip
+
+* Explore behavior and spending on other websites
+
+\medskip
+
+* Incorporate large variation in state sales tax laws
+
+### Replication Results
+
+**Baugh specification**
+
+\begin{align*}
+Y_{h, t} = \beta_0 + \beta_1 Collect_{h, t} &+ CostofLivingIndex_{c, t} +
+\\
+MonthFixedEffects_t &+ HouseholdFixedEffects_h + \epsilon_{h, t}
+\end{align*}
+
+**My specification**
+\begin{align*}
+Y_{h, t} = \beta_0 + \beta_1 Collect_{h, t} + \beta_2 SalesTax_{h, t} &+ \beta_3 SalesTax_{h, t} \times Collect_{h, t} + 
+\\
+MonthFixedEffects_t &+ \epsilon_{h, t}
+\end{align*}
+
+|                           |      Spending   |  Log(Spending) |
+|---------------------------|-----------------|----------------|
+| $Collect$                 | $-7.37^{***}$   | $-0.13^{***}$  |
+| $SalesTax$                | $-3.73$         | $-0.14$        |
+| $Collect \times SalesTax$ | $92.9^{***}$    | $1.48^{***}$   |
+
+### Comparison and Questions
+* Baugh et al gets an elasticity of -1.24 and a predicted sales decrease of about 9.4% on Amazon.
+
+\medskip
+
+* I'm concerned about the positive interaction coefficient
+
+\medskip
+
+* There are many sources of variation that I am not exploiting yet and I would like to do a better specification
+
+### Sources of Variation 
+1. Changes in sales tax rates over time
+2. Changes in tax rates of neighboring counties and states over time
+3. Variation in sales tax rates across different product categories
+4. Variation between websites that collect sales taxes or not (e.g. walmart.com versus Amazon.com before 2008)
+5. Variation in Amazon fulfillment center openings
+6. Variation in state enforcement of sales tax collection
+7. The cross of (1) and (6) and the variation in sales tax rates before state enforcement and after state enforcement of sales tax collection
+8. 5 states (Alaska, Delaware, Montana, New Hampshire, and Oregon) have never had sales tax (Alaska has local sales tax)
+9. Behavioral changes in browsing throughout each of the above
+
+### Contribution of Paper (Bigger Picture Idea)
+* Different and more unified approach to online shopping behavior
+* Tax elasticity estimates for online shopping are bimodal:
+    + **Low:** Alm & Melnik (0.5), Ballard & Lee (0.2), Scanlan (0)
+    + **High:** Baugh, Ben-David, and Park (1.2-1.4); Houde, Newberry, and Seim (1.3); Einav et al (1.8); Goolsbee (2.3)
+* Aside from Goolsbee, the low estimates tend to be from extensive margin estimates (i.e. buy online or not) while the high estimates are intensive margin estimates (i.e. buy from taxed online retailer or not)
+* Develop and estimate a model that rationalizes these margins
+
+### Main Model Aspects
+* Customers choose between two shopping technologies
+    + **Offline:** High search costs, high fixed cost, immediate utility
+    + **Online:** Low search cost, no fixed cost, delayed utility
+    
+\medskip
+
+* Rationalize the switch between technologies and use intensity (at least with online technology)
+
+### Questions
+1. Is this an interesting, feasible, and/or useful question?
+
+\medskip
+
+2. How best to get information on county adjacencies? Essential for incorporating cross-border shopping as in Ballard and Lee (2007)
+    + Thanks for pointing me to the [Missouri Census Data Center](http://mcdc.missouri.edu/websas/geocorr14.html)
+    
+\medskip
+
+3. What are some avenues of developing the model so it is tractable?
+
+### HH Index Replication
+![From Amazon Paper](../../code/katjaReplication/katjaChart.png)
+
+### My Attempt
+![My Attempt](../../code/katjaReplication/HHI.png)
+
+### Summary of Procedure
+1. Extracted all transactions from 2006-2015 that were in product categories for which Amazon had some recorded transactions
+2. Summed price and number of transactions for each year and each website
+3. Computed market shares for each website based on dollars spent or transactions made
+4. Computed HHI
+
+### Thanks!
+![Thanks!](thanks.jpg)

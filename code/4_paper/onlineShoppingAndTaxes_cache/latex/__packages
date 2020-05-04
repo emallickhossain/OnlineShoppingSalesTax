@@ -1,0 +1,12 @@
+base
+data.table
+zoo
+xts
+Quandl
+ggplot2
+plotly
+readxl
+scales
+fredr
+purrr
+RPostgres

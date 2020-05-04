@@ -1,0 +1,29 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Thu, Mar 12, 2020 - 09:09:12 PM
+\begin{table}[!htbp] \centering
+  \caption{Online Spending Response to Amazon Sales Tax Collection by Income}
+  \label{tab:appendixSpendingIncome}
+\begin{tabular}{@{\extracolsep{5pt}}lccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{3}{c}{Log Expenditures} \\
+\cline{2-4}
+ & <25k & 25-75k & >75k \\
+\\[-1.8ex] & (1) & (2) & (3)\\
+\hline \\[-1.8ex]
+ Collect * Tax Rate & $-$0.398 & $-$0.968$^{***}$ & $-$0.518 \\
+  & (0.452) & (0.332) & (0.320) \\
+ \hline \\[-1.8ex]
+Household FE & Y & Y & Y \\
+Month-Year FE & Y & Y & Y \\
+Mean Spending & 11.1 & 11.37 & 12.61 \\
+Mean Tax & 0.07 & 0.07 & 0.07 \\
+Observations & 201,854 & 511,685 & 404,680 \\
+Adjusted R$^{2}$ & 0.075 & 0.088 & 0.099 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{3}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\caption*{Note: Using 2006--2016 comScore data on household-month online expenditures, this table reports the estimation results of Equation \ref{eq:model} by income group. "Collect" is a dummy variable indicating whether Amazon collected sales tax in a particular household-month. "Tax Rate" measures the local sales tax rate faced by a household in a particular month. All expenditures are log-expenditures. Standard errors are clustered at the state level.}
+\end{table}

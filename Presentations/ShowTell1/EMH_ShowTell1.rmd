@@ -1,0 +1,94 @@
+---
+title: 'Show and Tell: Online Shopping'
+author: "Mallick Hossain"
+date: NULL
+output:
+  beamer_presentation:
+    slide_level: 3
+    keep_tex: false
+header-includes:
+- \usetheme[numbering = fraction, progressbar = none, background = light, sectionpage
+  = progressbar]{metropolis}
+- \usepackage{amsmath}
+subtitle: Initial Exploration and Idea
+fontsize: 10pt
+---
+### Progress Report
+* Secured third-year paper readers (thanks Frank!)
+* Obtained research data sets
+    + comScore Web Behavior database
+    + American Time-Use Survey
+* Constructed exploratory analysis tool for time-use survey
+* Beginning exploration of comScore data
+    + Primary data for third-year paper
+* Constructed short-list of feasible third-year paper questions
+
+### Data Overview
+* comScore Web Behavior Database
+    + Records online browsing and transaction activity of about 50,000 US users
+    + Years included: 2002, 2004, 2006-2015
+    + Includes data on
+        * Domains
+        * Number of pages viewed within domain
+        * Total time spent browsing domain
+        * Product purchased
+        * Product category
+        * Price and quantity
+        * Total price of basket
+    
+\centering
+\includegraphics[width = 0.5\textwidth]{./CS_LOGO}
+
+### Overview
+* E-commerce is a hot topic of exploration in the IO literature and time-use 
+data is shedding light on how people use the internet for shopping and leisure
+* Many interesting questions in these areas:
+    + How has online shopping and browsing activity (time and/or money spent) changed since 2002?
+    + Are individuals shifting their offline shopping online or is this generating new shopping?
+    + Has online shopping become more concentrated over time (measured by number of sites visited or with recorded purchases)?
+    + Does search in online shopping result in lower prices (i.e. what are the benefits of reduced search costs)?
+    + Is online shopping sensitive to sales or excise taxes?
+    
+### Time Spent Shopping
+* According to the American Time Use Survey, time spent on consumer purchases has declined over time
+
+\centering
+\includegraphics[scale = 0.3]{Shopping}
+
+# Related Literature
+### Nevo and Wong (2015)
+* Use Nielsen Homescan data to estimate the elasticity of 
+substitution between time and market goods in home production
+    + They obtain an estimate of 1.7 (SE = 0.5), which implies that households 
+    will allocate more time to home production (i.e. cooking, coupon clipping, etc.) 
+    if the relative price of market goods increases
+    + They also document a decreasing opportunity cost of time over the Great Recession
+    because households increased their shopping intensity even though the returns to
+    shopping decreased over that period
+
+### Aguiar and Hurst (2007)
+* Use time-use data to estimate how foregone work hours 
+were allocated during the Great Recession
+    + They find that 50% of foregone work hours were allocated to leisure (primarily 
+    sleeping and watching TV) and 30% were allocated to home production (primarily 
+    cooking, cleaning, laundry, and shopping)
+    
+### Goolsbee, Lovenheim, Slemrod (2010)
+* Use cigarette sales, excise taxes, and internet penetration to estimate sensitive to taxes
+    + Online tobacco merchants generally do not collect sales or excise taxes
+* Find that internet sales have increased sensitivity of taxable cigarette sales to state tax rates by 69%
+* Estimate that tax increases between 2001 and 2005 might have caused states to collect about 9% less revenue that would have been expected without tax-free internet sales
+
+### Goals for Next Meeting
+* Review papers related to e-commerce to help narrow down feasible and interesting questions
+* Clean and organize comScore data 
+* Answer at least one of the questions posed earlier in this presentation
+
+### Questions and Suggestions
+\centering
+\Large Any questions or suggestions?
+
+### Thanks
+
+\centering
+\includegraphics[scale = 0.5]{thanks}
