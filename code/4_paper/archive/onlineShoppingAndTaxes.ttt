@@ -1,0 +1,257 @@
+\begin{table}
+\centering
+\caption{Estimated Elasticities}
+\label{tab:elasticity}
+\begin{tabular}{lll}
+\hline
+\textbf{Elasticity Type}           & \textbf{Paper}                     & \textbf{Estimate}     \\
+\hline \hline
+\multirow{6}{3.5cm}{\textbf{Cross-border Price-Expenditure}} &
+  Asplund, Friberg, and Wilander (2007) -- Foreign price    & 0.2 to 0.5   \\
+& Asplund, Friberg, and Wilander (2007) -- Domestic price & -0.2 to -1.3 \\
+& Agarwal, Marwell, and McGranahan (2017)                 & -2 to -30    \\
+& Davis (2011)                                        & -2.2 to -3.6 \\
+& Agarwal, Chomsisengphet, Qian, and Xu (2017)            & -2.3         \\
+& Mikesell (1970)                                     & -6.3         \\ \hline
+\multirow{5}{3.5cm}{\textbf{Tax-Purchase}} &
+  Scanlan (2007)                                        &  0.0          \\
+& Ballard and Lee (2007)                               & -0.2          \\
+& Alm and Melnik (2005)                                & -0.5          \\
+& Einav, Knoepfle, Levin, and Sundaresan (2014)        & -1.8          \\
+& Goolsbee (2000)                                     & -2.3          \\ \hline
+\multirow{2}{3.5cm}{\textbf{Tax-Quantity}} &
+  Anderson, Fong, Simester, and Tucker (2010)          & -1.9 to -2.9  \\
+& Ellison \& Ellison (2009)                           & -6            \\ \hline
+\multirow{3}{3.5cm}{\textbf{Tax-Expenditure}} &
+  Baugh, Ben-David, and Park (2018)                      & -1.2 to -1.4  \\
+& Houde, Newberry, and Seim (2017)                     & -1.3          \\
+& Hu and Tang (2014)                                  & -3.75 to -4.5 \\ \hline
+\end{tabular}
+\caption*{Note: Early research focused on how taxes influenced the binary decision of whether or not to make an online purchase. Subsequent research has looked at how sales taxes affect actual online expenditures or quantities purchased. In order to distinguish between these concepts, I use "tax-purchase elasticity" to refer to the effect on the purchase decision while "tax-quantity elasticity" and "tax-expenditure elasticity" refer to the effect on online purchase quantities and expenditures, respectively.}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{Online Spending Response to Amazon Sales Tax Collection}
+  \label{tab:spendingDiD}
+\begin{tabularx}{\textwidth}{lXXXXXX}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & Amazon & Untaxed Sites & Taxed Sites & Amazon & Untaxed Sites & Taxed Sites \\
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
+\hline \\[-1.8ex]
+ Collect & $-$0.422$^{**}$ & $-$0.112 & 0.549$^{**}$ &  &  &  \\
+  & (0.183) & (0.150) & (0.249) &  &  &  \\
+  Collect * Tax Rate &  &  &  & $-$6.173$^{**}$ & $-$2.043 & 6.811$^{*}$ \\
+  &  &  &  & (2.715) & (2.165) & (3.545) \\
+ \hline \\[-1.8ex]
+Household FE & Y & Y & Y & Y & Y & Y \\
+Month-Year FE & Y & Y & Y & Y & Y & Y \\
+Mean Spending & 3.30 & 4.86 & 7.01 & 3.30 & 4.86 & 7.01 \\
+Mean Tax & 0.068 & 0.068 & 0.068 & 0.068 & 0.068 & 0.068 \\
+Observations & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 \\
+Adjusted R$^{2}$ & 0.124 & 0.203 & 0.184 & 0.124 & 0.203 & 0.184 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{6}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabularx}
+\caption*{Note: Using 2006--2016 comScore data on household-month online expenditures, this table reports the estimation results of Equation \ref{eq:model}, which regresses expenditures on an indicator for Amazon sales tax collection as well as household and month-year fixed effects. "Collect" is a dummy variable indicating whether Amazon collected sales tax in a particular household-month. "Tax Rate" measures the local sales tax rate faced by a household in a particular month. All expenditures are real expenditures, deflated to December 2016 using the CPI. "Taxed Sites" refers to websites of retailers that have offline stores. "Untaxed Sites" are online-only retailers with no offline stores. Standard errors are clustered at the state level.}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{Online Browsing Response to Amazon Sales Tax Collection}
+  \label{tab:browsingDiD}
+\begin{tabularx}{\textwidth}{lXXXXXX}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{6}{c}{Minutes Browsed} \\
+\cline{2-7}
+ & Amazon & Untaxed Sites & Taxed Sites & Amazon & Untaxed Sites & Taxed Sites \\
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5) & (6)\\
+\hline \\[-1.8ex]
+ Collect & 0.076 & 0.387 & 0.512 &  &  &  \\
+  & (0.435) & (0.977) & (0.640) &  &  &  \\
+  Collect * Tax Rate &  &  &  & 0.369 & 6.317 & 7.160 \\
+  &  &  &  & (5.695) & (12.840) & (9.243) \\
+ \hline \\[-1.8ex]
+Household FE & Y & Y & Y & Y & Y & Y \\
+Month-Year FE & Y & Y & Y & Y & Y & Y \\
+Mean Browsing (Min) & 11.71 & 66.66 & 27.98 & 11.71 & 66.66 & 27.98 \\
+Mean Tax & 0.068 & 0.068 & 0.068 & 0.068 & 0.068 & 0.068 \\
+Observations & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 & 5,076,040 \\
+Adjusted R$^{2}$ & 0.463 & 0.410 & 0.386 & 0.463 & 0.410 & 0.386 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{6}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabularx}
+\caption*{Note: Using 2006--2016 comScore data on household-month online browsing, this table reports the estimation results of Equation \ref{eq:model}, which regresses expenditures on an indicator for Amazon sales tax collection as well as household and month-year fixed effects. ``Collect'' is a dummy variable indicating whether Amazon collected sales tax in a particular household-month. ``Tax Rate'' measures the local sales tax rate faced by a household in a particular month. All browsing is in minutes. Standard errors are clustered at the state level.}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{Household Spending Response to Amazon Sales Tax Collection}
+  \label{tab:nielsenDiD}
+\begin{tabularx}{\textwidth}{lXXXXX}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{5}{c}{Real Spending} \\
+\cline{2-6}
+ & Total & Online & Offline & Online Non-Groc & Offline Non-Groc \\
+\\[-1.8ex] & (1) & (2) & (3) & (4) & (5)\\
+\hline \\[-1.8ex]
+ Collect & $-$0.682 & 0.036 & $-$0.719 & 0.001 & 0.118 \\
+  & (1.734) & (0.169) & (1.772) & (0.095) & (0.458) \\
+ \hline \\[-1.8ex]
+Household FE & Y & Y & Y & Y & Y \\
+Month-Year FE & Y & Y & Y & Y & Y \\
+Mean Spending & 316.39 & 4.7 & 311.69 & 2.93 & 94.74 \\
+Mean Tax & 0.068 & 0.068 & 0.068 & 0.068 & 0.068 \\
+Observations & 7,792,355 & 7,792,355 & 7,792,355 & 7,792,355 & 7,792,355 \\
+Adjusted R$^{2}$ & 0.531 & 0.331 & 0.532 & 0.226 & 0.399 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{5}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabularx}
+\caption*{Note: Using 2006--2016 Nielsen Consumer Panel data, this table reports the estimates from regressing monthly spending on an indicator for Amazon sales tax collection (``Collect'') as well as household and month-year fixed effects and household demographics. Standard errors are clustered at the state level.}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{comScore Sample}
+  \label{tab:comScoreClean}
+\begin{tabular}{@{\extracolsep{5pt}} cc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Step & HH \\
+\hline \\[-1.8ex]
+Starting HH: & $586,420$ \\
+Complete demographics: & $585,867$ \\
+Valid ZIPs: & $576,457$ \\
+Made Online Purchase: & $206,435$ \\
+\hline \\[-1.8ex]
+\end{tabular}
+\caption*{Note: Table reports the number of households remaining in sample after each step of data cleaning.}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{comScore Panel Summary Statistics}
+  \label{tab:comScorePanel}
+\begin{tabular}{@{\extracolsep{5pt}}lcccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Statistic & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{Median} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} & Census (2016) \\
+\hline
+Household Size  & 3.04  & 3     & 1.40  & 1     & 6       & 2.53 \\
+Age             & 46.65 & 47    & 12.59 & 19    & 65      & 51.9\\
+Income          & 59.01 & 62.50 & 31.66 & 7.50  & 100.00  & 59.04 \\
+Child Present   & 0.64  & 1     & 0.48  & 0     & 1       & 0.42 \\
+Hispanic        & 0.13  & 0     & 0.34  & 0     & 1       & 0.13\\
+Sales Tax       & 0.07  & 0.07  & 0.02  & 0.00  & 0.11    & - \\
+\hline \\[-1.8ex]
+N (Household-Years) & \multicolumn{6}{c}{261,416} \\
+\hline \\[-1.8ex]
+\end{tabular}
+\caption*{Note: Age and income are reported in bins, so the midpoint of each bin is used. "Child Present" indicates whether a child is present in the household. Census data comes from "Historical Households Tables" and "Income and Poverty in the United States: 2016."}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{comScore Transactions}
+  \label{tab:transactionsClean}
+\begin{tabular}{@{\extracolsep{5pt}} cc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Step & Transactions \\
+\hline \\[-1.8ex]
+Starting Transactions: & $4,934,867$ \\
+Unduplicated Transactions: & $3,956,424$ \\
+Amazon Categories: & $2,478,115$ \\
+Invalid Prices: & $2,269,680$ \\
+Invalid Domains: & $2,021,800$ \\
+\hline \\[-1.8ex]
+\end{tabular}
+\caption*{Note: Table reports the number of transactions remaining in sample after each step of data cleaning.}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{comScore Transaction Summary Statistics}
+  \label{tab:comScoreSummary}
+\begin{tabular}{@{\extracolsep{5pt}}lccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Statistic & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{Median} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\
+\hline \\[-1.8ex]
+Real Product Price & 39.09 & 20.82 & 57.06 & 1.00 & 608.90 \\
+Sales Tax & 0.07 & 0.07 & 0.02 & 0.00 & 0.11 \\
+Amazon Purchase & 0.28 & 0 & 0.45 & 0 & 1 \\
+Offline Amazon Competitor & 0.42 & 0 & 0.49 & 0 & 1 \\
+Online Amazon Competitor & 0.30 & 0 & 0.46 & 0 & 1 \\
+\hline \\[-1.8ex]
+N & \multicolumn{1}{c}{2,001,485} \\
+\hline \\[-1.8ex]
+\end{tabular}
+\caption*{Note: Prices are deflated to December 2016 price levels using the CPI. "Sales Tax" indicates average local sales tax rate, not the average sales tax paid on online transactions.}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{comScore Browsing Summary Statistics (Minutes)}
+  \label{tab:comScoreBrowsing}
+\begin{tabular}{@{\extracolsep{5pt}}lccccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Statistic & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{Median} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\
+\hline \\[-1.8ex]
+Total & 152.50 & 51.7 & 388.33 & 0 & 10,196 \\
+Amazon & 18.52 & 0 & 83.19 & 0 & 8,864 \\
+Untaxed Competitor & 93.46 & 16 & 346.00 & 0 & 10,176 \\
+Taxed Competitor & 40.51 & 8 & 100.53 & 0 & 9,810 \\
+\hline \\[-1.8ex]
+N (Household-Months) & \multicolumn{4}{c}{2,559,012} \\
+\hline \\[-1.8ex]
+\end{tabular}
+\caption*{Note: Using 2006--2016 comScore Web Behavior data, this table reports the distribution of monthly browsing durations, in minutes, on shopping websites.}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+  \caption{Homescan Sample}
+  \label{tab:homeScanClean}
+\begin{tabular}{@{\extracolsep{5pt}} cc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Step & HH \\
+\hline \\[-1.8ex]
+Starting HH: & $158,004$ \\
+Exclude military and students: & $155,256$ \\
+Exclude Households under 5k: & $154,352$ \\
+\hline \\[-1.8ex]
+\end{tabular}
+\end{table}
+\efloatseparator
+ 
+\begin{table}[!htbp] \centering
+\caption{Nielsen Consumer Panel Summary Statistics}
+\label{tab:homescanSummaryStats}
+\begin{tabular}{lccccc}
+\\[-1.8ex]\hline
+\hline
+Variable                  & Mean  & SD    & 25th Pctile & 75th Pctile & Census (2016) \\
+\hline
+Household income (\$000s) & 56.53 & 31.41 & 27.5        & 85 & 59.04 \\
+Household size            & 2.55  & 1.45  & 1           & 3  & 2.53 \\
+Age                       & 52.62 & 14.34 & 41.5        & 63 & 51.9 \\
+College Educated          & 0.38  & 0.48  & 0           & 1  & 0.37 \\
+Child present             & 0.33  & 0.47  & 0           & 1  & 0.42 \\
+Married                   & 0.50  & 0.50  & 0           & 1  & 0.48 \\
+\hline
+N (Household-Years)       & \multicolumn{4}{c}{637,493} \\
+N (Households)            & \multicolumn{4}{c}{154,352} \\
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+\end{tabular}
+\caption*{Note: Data are weighted for national representativeness.}
+\end{table}
